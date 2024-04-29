@@ -1,0 +1,34 @@
+{% load static %}
+
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <div class="container">
+        <a class="navbar-brand" href="/">This is Artemov</a>
+
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav mr-auto">
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url 'about_me' %}">About Me</a>
+                </li>
+
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url 'achive' %}">Achive</a>
+                </li>
+
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url 'cv' %}">CV</a>
+                </li>
+
+            <form class="form-inline my-2 my-lg-0">
+                {% if user.is_authenticated %}
+                    <span class="badge badge-light">{{ user.email }}</span>
+                    <a class="btn btn-link link-underline link-underline-opacity-0" href="/logout/" role="button">
+                        Sign out
+                    </a>
+                {% else %}
+                    <a class="btn btn-link link-underline-opacity-0" href="/login/" role="button">Sign in</a>
+                    <a class="btn btn-outline-primary" href="/registration/" role="button">Sign up</a>
+                {% endif %}
+            </form>
+        </div>
+    </div>
+</nav>
